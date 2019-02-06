@@ -66,7 +66,7 @@ function createFootPrint() {
     footImg.style.height = 70 + "px";
     //Divにイメージを組み込む
     div.appendChild(footImg);
-    //ゲーム画面にボールレイヤ（Div)を組み込む
+    //Divを組み込む
     initial.appendChild(div);
     $('#footprint').hide()
     $('#footprint').fadeIn(1000);
@@ -89,7 +89,7 @@ function createHare() {
     hareImg.style.height = 128 + "px";
     //Divにイメージを組み込む
     div.appendChild(hareImg);
-    //ゲーム画面にボールレイヤ（Div)を組み込む
+    //Divを組み込む
     initial.appendChild(div);
     $('#hare').hide()
     $('#hare').fadeIn(500);
@@ -123,7 +123,7 @@ function createHare() {
                 holeImg.style.height = 128 + "px";
                 //Divにイメージを組み込む
                 div.appendChild(holeImg);
-                //ゲーム画面にボールレイヤ（Div)を組み込む
+                //Divを組み込む
                 initial.appendChild(div);
                 $('#holeImg').hide()
                 $('#holeImg').fadeIn(1000);

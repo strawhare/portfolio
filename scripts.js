@@ -1,14 +1,16 @@
 var num = 0;
+var isHoleScaling = false
 window.onload = function() {
     createHare();
+    no_scroll()
 };
 
 function holeAni() {
     document.getElementById('hole').addEventListener("click", function() {
-        no_scroll()
+        if (isHoleScaling){return false};
+        isHoleScaling = true;
         $('#footprint').fadeOut(1000).queue(function() {
             this.remove();
-            return_scroll();
         });
         $('#holeImg').animate({paddingRight:1},{
     	//2秒かけてアニメーション
@@ -23,10 +25,11 @@ function holeAni() {
     	complete:function(){
             appendWallInit();
             appendWall();
+
+            createItems();
             createAlice();
     		$('#holeImg').fadeOut(1000).queue(function() {
                 $(`#hole`).remove();
-                return_scroll();
             });
 
     	}
@@ -166,7 +169,94 @@ function createAlice() {
     div.appendChild(aliceImg);
     //Divを組み込む
     initial.appendChild(div);
+    $('#alice').hide()
+    $('#alice').fadeIn(1000);
     rect();
+};
+
+function createItems() {
+        //clock
+        var div = document.createElement('div');
+        div.setAttribute("id", "clock")
+        var h = window.innerHeight;
+        var w = window.innerWidth;
+
+        div.style.position = "absolute";
+        div.style.top = 100 + "px";
+        div.style.right = 500 + "px";
+        div.style.bottom = 0 + "px";
+        div.style.left = 0 + "px";
+        div.style.margin = "auto";
+        div.style.height = 128 + "px";
+        div.style.width = 128 + "px";
+
+        var clockImg = document.createElement('img');
+        clockImg.setAttribute("id", "clockImg")
+        clockImg.style.position = "absolute";
+        clockImg.src = "images/clock.png";
+        clockImg.style.height = 128 + "px";
+        clockImg.style.width = 128 + "px";
+
+        //Divにイメージを組み込む
+        div.appendChild(clockImg);
+        //Divを組み込む
+        initial.appendChild(div);
+        $('#clock').hide()
+        $('#clock').fadeIn(1000);
+
+        //teapot
+        var potdiv = document.createElement('div');
+        potdiv.setAttribute("id", "pot")
+
+        potdiv.style.position = "absolute";
+        potdiv.style.top = 0 + "px";
+        potdiv.style.right = 0 + "px";
+        potdiv.style.bottom = 0 + "px";
+        potdiv.style.left = 500 + "px";
+        potdiv.style.margin = "auto";
+        potdiv.style.height = 128 + "px";
+        potdiv.style.width = 128 + "px";
+
+        var potImg = document.createElement('img');
+        potImg.setAttribute("id", "potImg")
+        potImg.style.position = "absolute";
+        potImg.src = "images/pot.png";
+        potImg.style.height = 128 + "px";
+        potImg.style.width = 128 + "px";
+
+        //Divにイメージを組み込む
+        potdiv.appendChild(potImg);
+        //Divを組み込む
+        initial.appendChild(potdiv);
+        $('#pot').hide()
+        $('#pot').fadeIn(1000);
+
+        //trump
+        var trumpdiv = document.createElement('div');
+        trumpdiv.setAttribute("id", "trump")
+
+        trumpdiv.style.position = "absolute";
+        trumpdiv.style.top = 0 + "px";
+        trumpdiv.style.right = 100 + "px";
+        trumpdiv.style.bottom = 300 + "px";
+        trumpdiv.style.left = 0 + "px";
+        trumpdiv.style.margin = "auto";
+        trumpdiv.style.height = 128 + "px";
+        trumpdiv.style.width = 128 + "px";
+
+        var trumpImg = document.createElement('img');
+        trumpImg.setAttribute("id", "trumpImg")
+        trumpImg.style.position = "absolute";
+        trumpImg.src = "images/trump.png";
+        trumpImg.style.height = 128 + "px";
+        trumpImg.style.width = 128 + "px";
+
+        //Divにイメージを組み込む
+        trumpdiv.appendChild(trumpImg);
+        //Divを組み込む
+        initial.appendChild(trumpdiv);
+        $('#trump').hide()
+        $('#trump').fadeIn(1000);
 };
 
 function rect() {
@@ -228,7 +318,7 @@ function appendWallInit() {
 
     div.style.backgroundColor = "white";
     div.style.position = "absolute";
-    div.style.top = h - 300 + "px";
+    div.style.top = h + "px";
     div.style.height = h + "px";
     div.style.right = w/10 + "px";
     div.style.width = w*4/5 + "px";

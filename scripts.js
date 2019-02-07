@@ -84,6 +84,45 @@ function createFootPrint() {
     $('#footprint').fadeIn(1000);
 };
 
+function walk() {
+    var div = document.createElement('div');
+    div.setAttribute("id", `foots`)
+    div.style.position = "absolute";
+    div.style.left = 0 + "px" ;
+    div.style.right = 0 + "px" ;
+    div.style.bottom = 0 + "px" ;
+    div.style.margin = 'auto';
+    div.style.width = 85*1.5 + "px" ;
+    div.style.height = 70*1.5 + "px" ;
+    var leftfootImg = document.createElement('img');
+    leftfootImg.style.position = "absolute";
+    leftfootImg.setAttribute("id","leftFootImg")
+    leftfootImg.src = "images/leftfoot.png";
+    leftfootImg.style.height = 70*1.5 + "px";
+    leftfootImg.style.left = 0 + "px";
+    //Divにイメージを組み込む
+    div.appendChild(leftfootImg);
+    var rightfootImg = document.createElement('img');
+    rightfootImg.style.position = "absolute";
+    rightfootImg.setAttribute("id","rightFootImg")
+    rightfootImg.src = "images/rightfoot.png";
+    rightfootImg.style.height = 70*1.5 + "px";
+    rightfootImg.style.right = 0 + "px";
+    rightfootImg.style.bottom = 100 + "px";
+    //Divにイメージを組み込む
+    div.appendChild(rightfootImg);
+    //Divを組み込む
+    initial.appendChild(div);
+    $("#leftFootImg").hide();
+    $("#rightFootImg").hide();
+    $("#leftFootImg").fadeIn(700);
+    $("#leftFootImg").fadeOut(700)
+    setTimeout(function() {
+        $("#rightFootImg").fadeIn(700);
+        $("#rightFootImg").fadeOut(700)
+    },1400);
+}
+
 function createHare() {
     var div = document.createElement('div');
     div.setAttribute("id", `hare`)
@@ -104,8 +143,8 @@ function createHare() {
     //Divを組み込む
     initial.appendChild(div);
     $('#hare').hide()
-    $('#hare').fadeIn(500);
-    $('#hare').fadeOut(500);
+    $('#hare').fadeIn(400);
+    $('#hare').fadeOut(400);
     var num = 2;
 
     var mv = function() {
@@ -116,6 +155,9 @@ function createHare() {
         `./images/hare${num}.png`;
         num++;
         if (num > 5) {
+            setTimeout(function() {
+                walk();
+            },1000);
             clearInterval(mvTimer)
             setTimeout(function() {
                 document.getElementById('hare').parentNode.removeChild(document.getElementById('hare'));
@@ -142,7 +184,7 @@ function createHare() {
                 $('#holeImg').fadeIn(1000);
                 createFootPrint();
                 holeAni();
-            },2000);
+            },4000);
         };
     };
     var mvTimer = setInterval(function(){

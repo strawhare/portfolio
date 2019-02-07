@@ -1,5 +1,5 @@
 var num = 0;
-var isHoleScaling = false
+var isHoleScaling = false;
 window.onload = function() {
     createHare();
     no_scroll()
@@ -25,7 +25,6 @@ function holeAni() {
     	complete:function(){
             appendWallInit();
             appendWall();
-
             createItems();
             createAlice();
     		$('#holeImg').fadeOut(1000).queue(function() {
@@ -104,8 +103,8 @@ function createHare() {
 
     var mv = function() {
         $('#hare').hide()
-        $('#hare').fadeIn(500);
-        $('#hare').fadeOut(500);
+        $('#hare').fadeIn(400);
+        $('#hare').fadeOut(400);
         document.getElementById('hareImg').src =
         `./images/hare${num}.png`;
         num++;
@@ -114,6 +113,7 @@ function createHare() {
             setTimeout(function() {
                 document.getElementById('hare').parentNode.removeChild(document.getElementById('hare'));
                 var div = document.createElement('div');
+                div.style.zIndex = 10
                 div.setAttribute("id", `hole`)
                 div.style.position = "absolute";
                 div.style.left = 0 + "px" ;
@@ -140,7 +140,7 @@ function createHare() {
     };
     var mvTimer = setInterval(function(){
         mv();
-    }, 1000);
+    }, 800);
 };
 
 function createAlice() {
@@ -169,15 +169,13 @@ function createAlice() {
     div.appendChild(aliceImg);
     //Divを組み込む
     initial.appendChild(div);
-    $('#alice').hide();
-    $('#alice').fadeIn(1000);
     rect("#alice",3200);
 };
 
 function createItems() {
         //clock
-        var a = document.createElement('a');
-        a.setAttribute("href", "index2.html")
+        var aClock = document.createElement('a');
+        aClock.setAttribute("href", "index2.html")
         var div = document.createElement('div');
         div.setAttribute("id", "clock")
         var h = window.innerHeight;
@@ -202,15 +200,13 @@ function createItems() {
         //Divにイメージを組み込む
         div.appendChild(clockImg);
         //Divを組み込む
-        a.appendChild(div);
-        initial.appendChild(a);
-        $('#clock').hide()
-        $('#clock').fadeIn(1000);
+        aClock.appendChild(div);
+        initial.appendChild(aClock);
         rect("#clock",3200);
 
         //teapot
-        var a = document.createElement('a');
-        a.setAttribute("href", "index2.html")
+        var aPot = document.createElement('a');
+        aPot.setAttribute("href", "index2.html")
         var potdiv = document.createElement('div');
         potdiv.setAttribute("id", "pot")
 
@@ -233,16 +229,14 @@ function createItems() {
         //Divにイメージを組み込む
         potdiv.appendChild(potImg);
         //Divを組み込む
-        a.appendChild(div);
-        initial.appendChild(a);
-        $('#pot').hide()
-        $('#pot').fadeIn(1000);
+        aPot.appendChild(potdiv);
+        initial.appendChild(aPot);
         rect("#pot", 3200);
 
 
         //trump
-        var a = document.createElement('a');
-        a.setAttribute("href", "index2.html")
+        var aTrump = document.createElement('a');
+        aTrump.setAttribute("href", "index2.html")
         var trumpdiv = document.createElement('div');
         trumpdiv.setAttribute("id", "trump")
 
@@ -265,10 +259,8 @@ function createItems() {
         //Divにイメージを組み込む
         trumpdiv.appendChild(trumpImg);
         //Divを組み込む
-        a.appendChild(div);
-        initial.appendChild(a);
-        $('#trump').hide()
-        $('#trump').fadeIn(1000);
+        aTrump.appendChild(trumpdiv);
+        initial.appendChild(aTrump);
         rect("#trump",3200);
 };
 

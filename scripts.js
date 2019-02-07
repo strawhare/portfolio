@@ -174,8 +174,6 @@ function createAlice() {
 
 function createItems() {
         //clock
-        var aClock = document.createElement('a');
-        aClock.setAttribute("href", "index2.html")
         var div = document.createElement('div');
         div.setAttribute("id", "clock")
         var h = window.innerHeight;
@@ -200,13 +198,10 @@ function createItems() {
         //Divにイメージを組み込む
         div.appendChild(clockImg);
         //Divを組み込む
-        aClock.appendChild(div);
-        initial.appendChild(aClock);
+        initial.appendChild(div);
         rect("#clock",3200);
 
         //teapot
-        var aPot = document.createElement('a');
-        aPot.setAttribute("href", "index2.html")
         var potdiv = document.createElement('div');
         potdiv.setAttribute("id", "pot")
 
@@ -229,14 +224,11 @@ function createItems() {
         //Divにイメージを組み込む
         potdiv.appendChild(potImg);
         //Divを組み込む
-        aPot.appendChild(potdiv);
-        initial.appendChild(aPot);
+        initial.appendChild(potdiv);
         rect("#pot", 3200);
 
 
         //trump
-        var aTrump = document.createElement('a');
-        aTrump.setAttribute("href", "index2.html")
         var trumpdiv = document.createElement('div');
         trumpdiv.setAttribute("id", "trump")
 
@@ -259,8 +251,7 @@ function createItems() {
         //Divにイメージを組み込む
         trumpdiv.appendChild(trumpImg);
         //Divを組み込む
-        aTrump.appendChild(trumpdiv);
-        initial.appendChild(aTrump);
+        initial.appendChild(trumpdiv);
         rect("#trump",3200);
 };
 

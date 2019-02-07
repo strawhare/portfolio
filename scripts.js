@@ -199,6 +199,7 @@ function createItems() {
         div.appendChild(clockImg);
         //Divを組み込む
         initial.appendChild(div);
+        worksAni();
         rect("#clock",3200);
 
         //teapot
@@ -225,6 +226,7 @@ function createItems() {
         potdiv.appendChild(potImg);
         //Divを組み込む
         initial.appendChild(potdiv);
+        contactAni();
         rect("#pot", 3200);
 
 
@@ -252,6 +254,7 @@ function createItems() {
         trumpdiv.appendChild(trumpImg);
         //Divを組み込む
         initial.appendChild(trumpdiv);
+        aboutAni();
         rect("#trump",3200);
 };
 
@@ -388,3 +391,24 @@ function up() {
         this.remove();
     });
 };
+
+function worksAni() {
+    document.getElementById('clock').addEventListener("click", function() {
+        console.log("a");
+        $('.mainClass').css('pointer-events', 'none');
+    },false);
+}
+
+function aboutAni() {
+    document.getElementById('trump').addEventListener("click", function() {
+        console.log("b");
+        $('.mainClass').css('pointer-events', 'none');
+    },false);
+}
+
+function contactAni() {
+    document.getElementById('pot').addEventListener("click", function() {
+        console.log("c");
+        $('.mainClass').css('pointer-events', 'none');
+    },false);
+}

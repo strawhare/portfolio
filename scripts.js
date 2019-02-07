@@ -169,9 +169,9 @@ function createAlice() {
     div.appendChild(aliceImg);
     //Divを組み込む
     initial.appendChild(div);
-    $('#alice').hide()
+    $('#alice').hide();
     $('#alice').fadeIn(1000);
-    rect();
+    rect("#alice",3200);
 };
 
 function createItems() {
@@ -203,6 +203,7 @@ function createItems() {
         initial.appendChild(div);
         $('#clock').hide()
         $('#clock').fadeIn(1000);
+        rect("#clock",3200);
 
         //teapot
         var potdiv = document.createElement('div');
@@ -230,6 +231,8 @@ function createItems() {
         initial.appendChild(potdiv);
         $('#pot').hide()
         $('#pot').fadeIn(1000);
+        rect("#pot", 3200);
+
 
         //trump
         var trumpdiv = document.createElement('div');
@@ -257,20 +260,25 @@ function createItems() {
         initial.appendChild(trumpdiv);
         $('#trump').hide()
         $('#trump').fadeIn(1000);
+        rect("#trump",3200);
 };
 
-function rect() {
-    $('#aliceImg').animate({
-        marginTop: '-=100px'
-    }, 1600).animate({
-        marginTop: '+=100px'
-    }, 1600);
-    $('#aliceImg').animate({
-        marginTop: '-=60px'
-    }, 1600).animate({
-        marginTop: '+=60px'
-    }, 1600);
-    setTimeout('rect()', 3200);
+function rect(name) {
+    first = Math.floor( Math.random() * (100-50) + 50);
+    second = Math.floor( Math.random() * (100-50) + 50);
+    time = Math.floor( Math.random() * (4000-2000) + 2000);
+    console.log(name);
+    $(name).animate({
+        marginTop: `-=${first}px`
+    }, time/2).animate({
+        marginTop: `+=${first}px`
+    }, time/2);
+    $(name).animate({
+        marginTop: `-=${second}px`
+    }, time/2).animate({
+        marginTop: `+=${second}px`
+    }, time/2);
+    setTimeout(`rect("${name}")`,time);
 }
 
 function appendWall() {

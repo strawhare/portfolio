@@ -1,8 +1,15 @@
 var num = 0;
 var isHoleScaling = false;
 window.onload = function() {
-    createHare();
     no_scroll()
+    var url = location.href;
+    var parameters = url.split("?");
+    var param = parameters[1];
+    if (param){
+        backedAni();
+    }else{
+        createHare();
+    }
 };
 
 function holeAni() {
@@ -424,4 +431,26 @@ function transitionAni(url) {
     }, 500,"linear").queue(function() {
         window.location.href = url
     });
+}
+
+function backedAni() {
+    appendWallInit();
+    appendWall();
+    createItems();
+    createAlice();
+    var div = document.getElementById('transition');
+    var h = window.innerHeight;
+    var w = window.innerWidth;
+    div.style.zIndex = 10;
+    div.style.position = "absolute";
+    div.style.top = -h*2 + "px";
+    div.style.right = 0 + "px";
+    div.style.left = 0 + "px";
+    div.style.height = h*3 + "px";
+    div.style.width = w + "px";
+
+    $(`#transition`).animate({
+        "top": "+=" + h*3 + "px"
+    }, 500,"linear");
+
 }

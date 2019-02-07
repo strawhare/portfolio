@@ -199,7 +199,6 @@ function createItems() {
         div.appendChild(clockImg);
         //Divを組み込む
         initial.appendChild(div);
-        worksAni();
         rect("#clock",3200);
 
         //teapot
@@ -226,7 +225,6 @@ function createItems() {
         potdiv.appendChild(potImg);
         //Divを組み込む
         initial.appendChild(potdiv);
-        contactAni();
         rect("#pot", 3200);
 
 
@@ -254,7 +252,7 @@ function createItems() {
         trumpdiv.appendChild(trumpImg);
         //Divを組み込む
         initial.appendChild(trumpdiv);
-        aboutAni();
+        transition();
         rect("#trump",3200);
 };
 
@@ -262,7 +260,6 @@ function rect(name) {
     first = Math.floor( Math.random() * (100-50) + 50);
     second = Math.floor( Math.random() * (100-50) + 50);
     time = Math.floor( Math.random() * (4000-2000) + 2000);
-    console.log(name);
     $(name).animate({
         marginTop: `-=${first}px`
     }, time/2).animate({
@@ -392,23 +389,39 @@ function up() {
     });
 };
 
-function worksAni() {
+function transition() {
     document.getElementById('clock').addEventListener("click", function() {
         console.log("a");
         $('.mainClass').css('pointer-events', 'none');
+        transitionAni("works.html");
     },false);
-}
-
-function aboutAni() {
     document.getElementById('trump').addEventListener("click", function() {
         console.log("b");
         $('.mainClass').css('pointer-events', 'none');
+        transitionAni("about.html");
     },false);
-}
-
-function contactAni() {
     document.getElementById('pot').addEventListener("click", function() {
         console.log("c");
         $('.mainClass').css('pointer-events', 'none');
+        transitionAni("contact.html");
     },false);
+}
+
+function transitionAni(url) {
+    var div = document.getElementById('transition');
+    var h = window.innerHeight;
+    var w = window.innerWidth;
+    div.style.zIndex = 10;
+    div.style.position = "absolute";
+    div.style.top = h + "px";
+    div.style.right = 0 + "px";
+    div.style.left = 0 + "px";
+    div.style.height = h*3 + "px";
+    div.style.width = w + "px";
+
+    $(`#transition`).animate({
+        "top": "-=" + h*3 + "px"
+    }, 500,"linear").queue(function() {
+        window.location.href = url
+    });
 }

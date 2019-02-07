@@ -1,0 +1,5 @@
+#moved {
+background:-webkit-linear-gradient(top, white 0%, white 50%, transparent 100%);
+background:-moz-linear-gradient(top, white 0%, white 50%, transparent 100%);
+background:linear-gradient(to bottom, white 0%, white 50%, transparent 100%);
+}
